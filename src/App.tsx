@@ -3,7 +3,7 @@ import PageOne from "./pageOne/PageOne";
 import Skills from "./skills/SkillsSection";
 import AboutMe from "./AboutMe/AboutMe";
 import Contact from "./contact/Contact";
-import ProjectsSection from "./project/ProjectSection";
+import ProjectSection from "./project/ProjectSection";
 import Footer from "./footer/Footer";
 function App() {
   return (
@@ -13,7 +13,7 @@ function App() {
         <PageOne />
         <Skills />
         <AboutMe />
-        <ProjectsSection />
+        <ProjectSection />
         <Contact />
       <Footer />
     </div>

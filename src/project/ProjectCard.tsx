@@ -14,9 +14,9 @@ interface Project {
 
 const ProjectCard: React.FC<{ project: Project }> = ({ project }) => {
   return (
-    <div className="bg-white dark:bg-slate-900 rounded-xl overflow-hidden shadow-sm border border-slate-100 dark:border-slate-800 flex flex-col h-min">
+    <div className="dark:bg-slate-900 rounded-xl overflow-hidden shadow-sm border border-slate-100 dark:border-slate-800 flex flex-col h-min">
      
-      <div className="relative h-44 overflow-hidden bg-slate-100">
+      <div className="relative h-44 overflow-hidden">
         <img 
           src={project.image} 
           alt={project.title} 

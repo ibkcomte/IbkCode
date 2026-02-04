@@ -3,13 +3,9 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 @layer base {
-  html {
-    @apply antialiased;
-    color-scheme: light;
-  }
-  
   html.dark {
     color-scheme: dark;
+    @apply antialiased;
   }
 
   body {

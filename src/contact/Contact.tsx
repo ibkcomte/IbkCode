@@ -9,8 +9,8 @@ import {
 
 const Contact = () => {
   return (
-    <div id="contact" className="min-h-screen bg-[#f8f8f8] p-4 sm:p-8 md:p-16 flex justify-center items-center">
-      <div className="bg-white rounded-lg shadow-2xl w-full max-w-6xl p-6 md:p-12 lg:p-16 flex flex-col lg:flex-row">
+    <div id="contact" className="min-h-screen bg-[#f8f8f8] dark:bg-slate-950 p-4 sm:p-8 md:p-16 flex justify-center items-center">
+      <div className=" rounded-lg shadow-2xl w-full max-w-6xl p-6 md:p-12 lg:p-16 flex flex-col lg:flex-row">
         <div className="font-serif lg:w-1/3 pr-0 lg:pr-12 space-y-10 border-b lg:border-b-0 lg:border-r border-gray-200 pb-8 lg:pb-0 mb-8 lg:mb-0">
           <h2 className="text-3xl font-extrabold italic tracking-widest text-center lg:text-left">
             CONTACT ME

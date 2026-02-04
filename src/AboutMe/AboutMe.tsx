@@ -4,8 +4,7 @@ import Button from "./Button";
 
 const AboutMe: React.FC = () => {
   return (
-    <section id='AboutMe' className="bg-white py-16 px-6 md:px-12 lg:px-24 font-sans text-slate-800">
-      {/* Section Header */}
+    <section id='AboutMe' className="bg-white dark:bg-slate-950 py-16 px-6 md:px-12 lg:px-24 font-sans text-slate-800">
       <div className="text-center mb-16">
         <h2 className="text-4xl font-extrabold">
           ABOUT <span className="text-[#00CED1] font-serif italic">ME</span>

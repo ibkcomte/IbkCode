@@ -14,13 +14,13 @@ const PageOne: React.FC = () => {
     <>
       <section
         id="pageOne"
-        className="flex flex-row items-center p-12 bg-white rounded-xl"
+        className="flex flex-row items-center p-12 bg-white dark:bg-slate-950 rounded-xl"
       >
         <PageOneCard name="Ibukun Dada" role="Developer" />
         <img
           src={passport}
           alt="Dada Ibukun, Professional Developer"
-          className="rounded-full object-cover border-lemon-400 p-4"
+          className="rounded-full object-cover border-lemon-400 p-4 hidden md:block"
         />
         
       </section>
