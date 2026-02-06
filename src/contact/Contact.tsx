@@ -1,154 +1,146 @@
 import React from "react";
-
-import {
-  BookOpen,
-  User,
-  ShoppingBag,
-  ShoppingCart,
+import { motion } from "framer-motion";
+import { 
+  MapPin, 
+  User, 
+  Mail, 
+  Send,
+  CheckCircle2
 } from "lucide-react";
 
-const Contact = () => {
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: { staggerChildren: 0.1, delayChildren: 0.2 }
+  }
+
+};
+
+const Contact: React.FC = () => {
   return (
-    <div id="contact" className="min-h-screen bg-[#f8f8f8] dark:bg-slate-950 p-4 sm:p-8 md:p-16 flex justify-center items-center">
-      <div className=" rounded-lg shadow-2xl w-full max-w-6xl p-6 md:p-12 lg:p-16 flex flex-col lg:flex-row">
-        <div className="font-serif lg:w-1/3 pr-0 lg:pr-12 space-y-10 border-b lg:border-b-0 lg:border-r border-gray-200 pb-8 lg:pb-0 mb-8 lg:mb-0">
-          <h2 className="text-3xl font-extrabold italic tracking-widest text-center lg:text-left">
-            CONTACT ME
-          </h2>
-          <div className="text-center lg:text-left">
-            <span className="text-sm font-semibold text-teal-200">LET'S</span>
-            <h3 className="text-2xl font-light">Talk About Ideas</h3>
-          </div>
+    <section id="contact" className="min-h-screen bg-slate-50 dark:bg-slate-950 p-6 md:p-16 lg:p-24 flex justify-center items-center overflow-hidden">
+      <motion.div 
+        variants={containerVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        className="bg-white dark:bg-slate-900/50 backdrop-blur-xl rounded-[2.5rem] shadow-2xl shadow-slate-200/50 dark:shadow-none w-full max-w-6xl flex flex-col lg:flex-row overflow-hidden border border-white/20"
+      >
+        
+        {/* Left Column: Contact Info */}
+        <div className="lg:w-2/5 p-8 md:p-12 lg:p-16 bg-slate-900 text-white relative">
+          {/* Decorative Lime Glow */}
+          <div className="absolute top-0 left-0 w-32 h-32 bg-lime-400/10 blur-3xl rounded-full" />
+          
+          <motion.div className="relative z-10 space-y-12">
+            <header className="space-y-2">
+              <h2 className="text-sm font-black tracking-[0.3em] uppercase text-[#00CED1]">
+                Contact Me
+              </h2>
+              <h3 className="text-4xl md:text-5xl font-extrabold italic font-serif">
+                Let's <span className="text-[#00CED1]">Talk</span>
+              </h3>
+            </header>
 
-          <div className="space-y-6">
-            <div className="flex items-start">
-              <div className="w-10 h-10 rounded-full border border-gray-300 flex items-center justify-center mr-4 mt-1">
-                <BookOpen className="text-gray-600 hover:text-teal-400" />
-              </div>
-              <div>
-                <p className="text-sm font-light uppercase text-gray-900">
-                  Address
-                </p>
-                <p className="font-medium text-gray-800">Lagos, Nigeria.</p>
-              </div>
+            <div className="space-y-8">
+              <ContactDetail 
+                icon={<MapPin size={20} />} 
+                label="Address" 
+                value="Lagos, Nigeria." 
+              />
+              <ContactDetail 
+                icon={<User size={20} />} 
+                label="Freelance" 
+                value="Available Right Now" 
+                isStatus 
+              />
+              <ContactDetail 
+                icon={<Mail size={20} />} 
+                label="Email" 
+                value="cathycomte30@gmail.com" 
+              />
             </div>
-
-            {/* Freelance */}
-            <div className="flex items-start">
-              <div className="w-10 h-10 rounded-full border border-gray-300 flex items-center justify-center mr-4 mt-1">
-                <User className="text-gray-600 hover:text-teal-400" />
-              </div>
-              <div>
-                <p className="text-sm font-light uppercase text-gray-900">
-                  Freelance
-                </p>
-                <p className="text-sm font-light text-teal-200">
-                  Available Right Now
-                </p>
-              </div>
-            </div>
-            <div className="flex items-start">
-              <div className="w-10 h-10 rounded-full border border-gray-300 flex items-center justify-center mr-4 mt-1">
-                <ShoppingBag className="text-gray-600 hover:text-teal-400"/>
-              </div>
-              <div>
-                <p className="text-sm font-light uppercase text-gray-900">
-                  Email
-                </p>
-                <p className="font-medium text-gray-800">
-                  cathycomte30@gmail.com
-                </p>
-              </div>
-            </div>
-          </div>
+          </motion.div>
         </div>
 
-        <div className="lg:w-2/3 lg:pl-12">
-          <form className="space-y-6">
-            <div className="flex flex-col sm:flex-row gap-6">
-              <div className="flex-1">
-                <label
-                  htmlFor="name"
-                  className="text-xs uppercase text-gray-500 block mb-2"
-                >
-                  YOUR FULL NAME *
-                </label>
-                <input
-                  type="text"
-                  id="name"
-                  required
-                  className="w-full p-3 border-b border-gray-300 focus:border-teal-500 focus:outline-none transition duration-300"
-                />
-              </div>
-              <div className="flex-1">
-                <label
-                  htmlFor="email"
-                  className="text-xs uppercase text-gray-500 block mb-2"
-                >
-                  YOUR EMAIL ADDRESS *
-                </label>
-                <input
-                  type="email"
-                  id="email"
-                  required
-                  className="w-full p-3 border-b border-gray-300 focus:border-green-500 focus:outline-none transition duration-300"
-                />
-              </div>
+        {/* Right Column: Form */}
+        <div className="lg:w-3/5 p-8 md:p-12 lg:p-16 bg-white dark:bg-transparent">
+          <form className="space-y-8">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
+              <CustomInput label="Your Full Name" id="name" type="text" placeholder="John Doe" />
+              <CustomInput label="Your Email Address" id="email" type="email" placeholder="john@example.com" />
             </div>
 
-            {/* Subject Field */}
-            <div>
-              <label
-                htmlFor="subject"
-                className="text-xs uppercase text-gray-500 block mb-2"
-              >
-                YOUR SUBJECT *
-              </label>
-              <input
-                type="text"
-                id="subject"
-                required
-                className="w-full p-3 border-b border-gray-300 focus:border-lime-500 focus:outline-none transition duration-300"
-              />
-            </div>
+            <CustomInput label="Your Subject" id="subject" type="text" placeholder="Project Inquiry" />
 
-            {/* Message Field */}
-            <div>
-              <label
-                htmlFor="message"
-                className="text-xs uppercase text-gray-500 block mb-2"
-              >
-                YOUR MESSAGE *
+            <div className="space-y-2">
+              <label className="text-[10px] font-black uppercase tracking-widest text-slate-400 dark:text-slate-500">
+                Your Message
               </label>
               <textarea
-                id="message"
                 required
-                className="w-full p-4 border border-gray-300 focus:border-lime-500 focus:outline-none transition duration-300 resize-none"
+                rows={4}
+                className="w-full p-4 bg-slate-50 dark:bg-slate-800/50 border-2 border-transparent focus:border-[#00CED1] rounded-2xl transition-all outline-none text-slate-800 dark:text-white resize-none"
+                placeholder="How can I help you?"
               />
             </div>
 
-            {/* Footer and Button */}
-            <div className="flex justify-between items-center pt-4">
-              <div className="flex items-center text-xs  text-gray-500">
-                <input type="checkbox" id="terms" required className="mr-2 " />
-                <label htmlFor="terms" className="cursor-pointer italic">
-                  * Accept the terms and conditions.
-                </label>
-              </div>
+            <div className="flex flex-col sm:flex-row justify-between items-center gap-6">
+              <label className="flex items-center gap-3 cursor-pointer group">
+                <div className="relative flex items-center">
+                  <input type="checkbox" required className="peer sr-only" id="terms" />
+                  <div className="w-5 h-5 border-2 border-slate-200 dark:border-slate-700 rounded-md peer-checked:bg-[#00CED1] peer-checked:border-[#00CED1] transition-all" />
+                  <CheckCircle2 size={14} className="absolute left-0.5 text-white opacity-0 peer-checked:opacity-100 transition-opacity" />
+                </div>
+                <span className="text-xs italic text-slate-500 dark:text-slate-400 group-hover:text-slate-700 transition-colors">
+                  I accept the terms and conditions.
+                </span>
+              </label>
 
-              {/* Submit Button */}
-              <button
+              <motion.button
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
                 type="submit"
-                className="bg-[#00CED1] hover:bg-teal-200 text-white font-semibold py-3 px-8 transition duration-300 rounded-lg shadow-md"
+                className="w-full sm:w-auto bg-[#00CED1] hover:bg-[#00CED1] text-white hover:text-slate-900 font-black py-4 px-10 rounded-2xl transition-all shadow-xl shadow-teal-500/20 flex items-center justify-center gap-3"
               >
                 SEND MESSAGE
-              </button>
+                <Send size={18} />
+              </motion.button>
             </div>
           </form>
         </div>
-      </div>
-    </div>
+      </motion.div>
+    </section>
   );
 };
+
+/* Helper Components */
+const ContactDetail = ({ icon, label, value, isStatus }: any) => (
+  <div className="flex items-center gap-5">
+    <div className="w-12 h-12 rounded-2xl bg-white/5 flex items-center justify-center text-[#00CED1] border border-white/10 group-hover:bg-lime-400 group-hover:text-slate-900 transition-all">
+      {icon}
+    </div>
+    <div>
+      <p className="text-[10px] font-black uppercase tracking-widest text-slate-500">{label}</p>
+      <p className={`font-bold ${isStatus ? "text-[#00CED1]" : "text-white"}`}>{value}</p>
+    </div>
+  </div>
+);
+
+const CustomInput = ({ label, id, type, placeholder }: any) => (
+  <div className="space-y-2 group">
+    <label htmlFor={id} className="text-[10px] font-black uppercase tracking-widest text-slate-400 dark:text-slate-500 transition-colors group-focus-within:text-lime-100">
+      {label} *
+    </label>
+    <input
+      type={type}
+      id={id}
+      required
+      placeholder={placeholder}
+      className="w-full pb-3 bg-transparent border-b-2 border-slate-100 dark:border-slate-800 focus:border-[#00CED1] outline-none transition-all text-slate-800 dark:text-white placeholder:text-slate-300 dark:placeholder:text-slate-700"
+    />
+  </div>
+);
 
 export default Contact;

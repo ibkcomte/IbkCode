@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Sun, Moon, Menu, X } from "lucide-react"; 
+import ibkCodelogo from "./assets/ibkCodelogo.png"
 type Theme = "light" | "dark";
 
 const Navbar: React.FC = () => {
@@ -44,9 +45,14 @@ const Navbar: React.FC = () => {
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <div className="flex items-center">
-            <span className="animate-bounce text-xl font-bold text-[#00CED1] dark:text-[#00b3b5]">
-              IBKCode Portfolio
-            </span>
+          <img src={ibkCodelogo} alt="Logo" className="font-bold h-12 w-12 hue-rotate-[60deg] saturate-150 dark:text-[#00b3b5]"
+              
+            />
+            <div className="text-center text-[#062427] dark:text-slate-300">
+          <p className="text-lg font-black tracking-tighter">
+            IBK<span className=" dark:text-[#00CED1] italic">CODES</span>
+          </p>
+        </div>
           </div>
 
           {/* Desktop Nav */}
@@ -55,7 +61,7 @@ const Navbar: React.FC = () => {
               <a
                 key={link.name}
                 href={link.href}
-                className="text-black font-bold dark:text-gray-700 hover:text-lime-600 dark:hover:text-white px-3 py-2 text-sm  transition-colors"
+                className="text-black font-bold dark:text-slate-100 hover:text-lime-600 dark:hover:text-white px-3 py-2 text-sm  transition-colors"
               >
                 {link.name}
               </a>
@@ -64,7 +70,7 @@ const Navbar: React.FC = () => {
             {/* Theme Toggle Button */}
             <button
               onClick={toggleTheme}
-              className="p-2 rounded-lg bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-lime-400 hover:ring-2 transition-all"
+              className="p-2 rounded-lg bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-[#00CED1] hover:ring-2 transition-all"
               aria-label="Toggle Theme"
             >
                {theme === "light" ? <Moon size={20} /> : <Sun size={20} />} 

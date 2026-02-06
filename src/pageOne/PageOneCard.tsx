@@ -1,27 +1,61 @@
 import React from "react";
+import { motion } from "framer-motion";
 
 interface PageOneCardProps {
   name: string;
   role: string;
 }
 
-const PageOneCard: React.FC<PageOneCardProps> = ({ name,  }) => {
+const PageOneCard: React.FC<PageOneCardProps> = ({ name, role }) => {
+  // Animation variants for internal elements
+  const childVariants = {
+    hidden: { opacity: 0, x: -20 },
+    visible: { opacity: 1, x: 0, transition: { duration: 0.6 } },
+  };
+
   return (
-    <div className="max-w-md bg-white bright:bg-slate-900 flex flex-cols-6 flex-wrap rounded-3xl shadow-teal-50  border border-slate-100 transition-transform hover:scale-[1.02]">
-      <div className="flex flex-col items-center text-center">
-        <h3 className="font-bold text-[70px]">Hi, I'm</h3>
-        <h2 className="text-[60px] font-extrabold tracking-tighter text-[#00CED1] dark:text-[#00b3b5]">
+    <div className="w-full max-w-2xl bg-transparent">
+      <div className="flex flex-col items-start text-left">
+        {/* Intro Tag */}
+        <motion.span 
+          variants={childVariants}
+          className="px-4 py-1 rounded-full bg-lemon-400/10 text-lemon-600 dark:text-lemon-400 text-sm font-bold uppercase tracking-widest mb-4"
+        >
+          {role}
+        </motion.span>
+
+        {/* Main Heading */}
+        <motion.h3 
+          variants={childVariants}
+          className="font-bold text-5xl md:text-7xl text-slate-900 dark:text-white leading-tight"
+        >
+          Hi, I'm
+        </motion.h3>
+
+        {/* Name with Gradient */}
+        <motion.h2 
+          variants={childVariants}
+          className="text-6xl md:text-8xl font-extrabold tracking-tighter bg-gradient-to-r from-[#00CED1] to-[#008b8b] bg-clip-text text-transparent pb-4"
+        >
           {name}
-        </h2>
-        {/* <p className="text-black font-medium text-sm mb-4 uppercase tracking-widest">
-          
-        </p> */}
-        <p className="text-black dark:text-slate-900 leading-relaxed text-md">
-          A Frontend Developer who believes that code should be as predictable
-          as it is powerful. My specialty lies in building dynamic user
-          interfaces using React and TypeScript, ensuring that applications are
-          not only fast but also rock-solid and scalable.
-        </p>
+        </motion.h2>
+
+        {/* Divider line */}
+        <motion.div 
+          variants={childVariants}
+          className="w-20 h-1.5 bg-lemon-400 rounded-full mb-6"
+        />
+
+        {/* Bio Description */}
+        <motion.p 
+          variants={childVariants}
+          className="text-slate-600 dark:text-slate-400 leading-relaxed text-lg md:text-xl max-w-lg"
+        >
+          A <span className="text-slate-900 dark:text-white font-semibold">Frontend Developer</span> who 
+          believes that code should be as predictable as it is powerful. I build dynamic interfaces 
+          using <span className="text-[#00CED1] font-medium">React & TypeScript</span>, ensuring 
+          applications are rock-solid and scalable.
+        </motion.p>
       </div>
     </div>
   );
