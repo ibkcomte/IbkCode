@@ -11,10 +11,10 @@ const Navbar: React.FC = () => {
       const saved = localStorage.getItem("theme") as Theme;
       return (
         saved ||
-        window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light"
+        window.matchMedia("(prefers-color-scheme: dark)").matches ?  "light" : "dark" 
       );
     }
-    return "dark";
+    return "light";
   });
 
   useEffect(() => {
@@ -49,7 +49,7 @@ const Navbar: React.FC = () => {
               
             />
             <div className="text-center text-[#062427] dark:text-slate-300">
-          <p className="text-lg font-black tracking-tighter">
+          <p className="text-lg font-black tracking-tighter pl-3">
             IBK<span className=" dark:text-[#00CED1] italic">CODES</span>
           </p>
         </div>

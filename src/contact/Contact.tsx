@@ -1,5 +1,5 @@
-import React from "react";
-import { motion } from "framer-motion";
+import React, { useState } from "react";
+import { motion , AnimatePresence } from "framer-motion";
 import { 
   MapPin, 
   User, 
@@ -18,6 +18,17 @@ const containerVariants = {
 };
 
 const Contact: React.FC = () => {
+  const [submitted, setSubmitted] = useState(false);
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    
+    // Here is where you'd normally send the data to a backend or service like Formspree
+    console.log("Form Submitted!");
+    
+    // 4. Trigger the success view
+    setSubmitted(true);
+  };
   return (
     <section id="contact" className="min-h-screen bg-slate-50 dark:bg-slate-950 p-6 md:p-16 lg:p-24 flex justify-center items-center overflow-hidden">
       <motion.div 
@@ -66,7 +77,12 @@ const Contact: React.FC = () => {
 
         {/* Right Column: Form */}
         <div className="lg:w-3/5 p-8 md:p-12 lg:p-16 bg-white dark:bg-transparent">
-          <form className="space-y-8">
+          <motion.form  key="contact-form"
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, scale: 0.95 }}
+                onSubmit={handleSubmit} // 5. Attach the submit handler
+                className="space-y-8">
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
               <CustomInput label="Your Full Name" id="name" type="text" placeholder="John Doe" />
               <CustomInput label="Your Email Address" id="email" type="email" placeholder="john@example.com" />
@@ -88,14 +104,7 @@ const Contact: React.FC = () => {
 
             <div className="flex flex-col sm:flex-row justify-between items-center gap-6">
               <label className="flex items-center gap-3 cursor-pointer group">
-                <div className="relative flex items-center">
-                  <input type="checkbox" required className="peer sr-only" id="terms" />
-                  <div className="w-5 h-5 border-2 border-slate-200 dark:border-slate-700 rounded-md peer-checked:bg-[#00CED1] peer-checked:border-[#00CED1] transition-all" />
-                  <CheckCircle2 size={14} className="absolute left-0.5 text-white opacity-0 peer-checked:opacity-100 transition-opacity" />
-                </div>
-                <span className="text-xs italic text-slate-500 dark:text-slate-400 group-hover:text-slate-700 transition-colors">
-                  I accept the terms and conditions.
-                </span>
+                
               </label>
 
               <motion.button
@@ -108,7 +117,48 @@ const Contact: React.FC = () => {
                 <Send size={18} />
               </motion.button>
             </div>
-          </form>
+          </motion.form>
+          <AnimatePresence mode="wait">
+            {!submitted ? (
+              // THE FORM
+              <motion.form 
+                key="contact-form"
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, scale: 0.95 }}
+                onSubmit={handleSubmit} // 5. Attach the submit handler
+                className="space-y-8"
+              >
+          
+              
+              </motion.form>
+            ) : (
+              // THE SUCCESS MESSAGE
+              <motion.div 
+                key="success-message"
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                className="text-center space-y-6 py-12"
+              >
+                <div className="w-20 h-20 bg-lime-400/20 text-lime-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <CheckCircle2 size={48} />
+                </div>
+                <h3 className="text-4xl font-black text-slate-900 dark:text-white">
+                  Thank <span className="text-[#00CED1]">You!</span>
+                </h3>
+                <p className="text-slate-500 dark:text-slate-400 text-lg">
+                  Your message has been received. <br /> 
+                  I'll get back to you!
+                </p>
+                <button 
+                  onClick={() => setSubmitted(false)}
+                  className="text-sm font-bold text-[#00CED1] hover:underline pt-4"
+                >
+                  Send another message?
+                </button>
+              </motion.div>
+            )}
+          </AnimatePresence>
         </div>
       </motion.div>
     </section>
