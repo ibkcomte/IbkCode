@@ -13,7 +13,6 @@ interface Project {
   liveUrl?: string;
 }
 
-
 const ProjectCard: React.FC<{ project: Project }> = ({ project }) => {
   return (
     <motion.div 
