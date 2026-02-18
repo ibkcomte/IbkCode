@@ -54,7 +54,7 @@ const Project: Project[] = [
     status: "In Progress",
     tags: [""],
     githubUrl: "https://github.com/ZULFAHGROUP/pet-app-frontend",
-    liveUrl: "https://tiwaadetoye.com/",
+    
   },
 ];
 
