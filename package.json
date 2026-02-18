@@ -1,5 +1,5 @@
 {
-  "name": "SmartDesk-flexi",
+  "name": "IbkCode",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -39,5 +39,5 @@
   "overrides": {
     "vite": "npm:rolldown-vite@7.2.5"
   },
-  "homepage": "https://ibkcomte.github.io/SmartDesk-flexi"
+  "homepage": "https://ibkcomte.github.io/IbkCode"
 }
