@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { ArrowUp, Github, Linkedin, Twitter, Mail } from 'lucide-react';
+import { ArrowUp, Github, Linkedin, Mail } from 'lucide-react';
 
 const Footer: React.FC = () => {
   const scrollToTop = () => {
@@ -43,7 +43,7 @@ const Footer: React.FC = () => {
         <div className="flex gap-4">
           <SocialIcon href="https://github.com/ibkcomte" icon={<Github size={20} />} />
           <SocialIcon href="https://linkedin.com/in/ibkdada" icon={<Linkedin size={20} />} />
-          <SocialIcon href="https://twitter.com" icon={<Twitter size={20} />} />
+          {/* <SocialIcon href="https://twitter.com" icon={<Twitter size={20} />} /> */}
           <SocialIcon href="mailto:cathycomte30@gmail.com" icon={<Mail size={20} />} />
         </div>
 

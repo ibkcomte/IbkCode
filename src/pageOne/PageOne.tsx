@@ -6,7 +6,7 @@ import passport from "../assets/passport.jpg";
 
 const PageOne: React.FC = () => {
   const handleScroll = () => {
-    const contactSection = document.getElementById("projects"); // Or 'contact'
+    const contactSection = document.getElementById("projects"); 
     contactSection?.scrollIntoView({ behavior: "smooth" });
   };
 
@@ -30,7 +30,7 @@ const PageOne: React.FC = () => {
       initial="hidden"
       animate="visible"
       variants={containerVariants}
-      className="relative min-h-[80vh] flex flex-col md:flex-row gap-12 items-center justify-between p-8 md:p-16 bg-white dark:bg-slate-950 rounded-3xl overflow-hidden"
+      className="relative min-h-[80vh] flex flex-col md:flex-row gap-12 items-center justify-between p-8 md:p-16 bg-white dark:bg-slate-950 overflow-hidden"
     >
       {/* Text/Card Content */}
       <motion.div variants={itemVariants} className="flex-1 z-10">
